@@ -5,8 +5,21 @@ class Title(Scene):
     def construct(self):
 
         europe = ImageMobject("worldmap.png")
+        
         you = Dot(LEFT*3, color = PURPLE_A)
         you.shift(UP*1)
+        you2 = Dot(LEFT*3, color = PURPLE_A)
+        you2.shift(UP*1)
+        youline = TracedPath(you.get_center, dissipating_time=0.5, stroke_opacity=[0, 1])
+
+        vpnserver = Dot(RIGHT*2, color= YELLOW_A)
+        vpnserver.shift(DOWN*1)
+        destination = Dot(LEFT*3, color = PURPLE_A)
+        destination.shift(DOWN*2)
+
+        line1 = Line(you2.get_center(), vpnserver.get_center())
+        line2 = Line(vpnserver.get_center(), destination.get_center())
+        
 
         
         '''
@@ -35,7 +48,18 @@ class Title(Scene):
         '''
 
         self.play(FadeIn(europe, shift=DOWN * 2, scale=1))
-        self.play(FadeIn(you, shift=DOWN * 2, scale=1))
+        self.play(FadeIn(you, shift=UP * 2, scale=1))
+        self.play(FadeIn(vpnserver, shift=UP * 2, scale=1))
+        self.play(FadeIn(destination, shift=UP * 2, scale=1))
+        self.add(you, you2, youline, vpnserver, destination)
+
+
+        self.play(Succession(
+            you.animate.move_to(vpnserver),
+            you.animate.move_to(destination),
+            you.animate.move_to(vpnserver),
+            you.animate.move_to(you2)
+        ))
         self.wait(2)
         
 
