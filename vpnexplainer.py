@@ -21,6 +21,9 @@ class Title(Scene):
         self.add(youline)
 
         # Animate movements
+        self.play(you.animate.move_to(destination.get_center()))
+        self.play(you.animate.move_to(LEFT * 3 + UP))  # Return to start
+        wait(2)
         self.play(you.animate.move_to(vpnserver.get_center()))
         self.play(you.animate.move_to(destination.get_center()))
         self.play(you.animate.move_to(vpnserver.get_center()))

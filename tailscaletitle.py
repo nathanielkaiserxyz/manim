@@ -3,7 +3,7 @@ from manim import *
 class Title(Scene):
 
     def construct(self):
-
+        """
         europe = ImageMobject("worldmap.png")
         
         you = Dot(LEFT*3, color = PURPLE_A)
@@ -19,23 +19,23 @@ class Title(Scene):
 
         line1 = Line(you2.get_center(), vpnserver.get_center())
         line2 = Line(vpnserver.get_center(), destination.get_center())
-        
+        """
 
         
-        '''
+        
         c = Circle(2, color = RED, fill_opacity = 0.1)
+        a = Arc(2.2, TAU * 1 / 4, -TAU * 2.6 / 4, color = BLUE, stroke_width=15)
+
         
         self.play(DrawBorderThenFill(c), run_time = 0.5)
-
+        self.play(Create(a))
         title = Text("Tailscale", font_size = 72, slant="ITALIC").shift(UP * 0.3)
 
-        subtitle = Text("What is a VPN anyway", slant = "ITALIC", color = PURPLE_A).shift(DOWN * 0.5)
+        subtitle = Text("What is a VPN anyway", slant = "ITALIC", color = WHITE).shift(DOWN * 0.5)
 
         self.play(Write(title), Write(subtitle))
 
-        a = Arc(2.2, TAU * 1 / 4, -TAU * 2.6 / 4, color = BLUE, stroke_width=15)
-
-        self.play(Create(a))
+       
 
         self.wait(3)
 
@@ -45,8 +45,8 @@ class Title(Scene):
         self.play(FadeOut(subtitle, shift=DOWN * 2, scale=1.5))
         self.play(FadeOut(c, shift=DOWN * 2, scale=1.5))
         self.wait(1)
-        '''
-
+        
+        """ 
         self.play(FadeIn(europe, shift=DOWN * 2, scale=1))
         self.play(FadeIn(you, shift=UP * 2, scale=1))
         self.play(FadeIn(vpnserver, shift=UP * 2, scale=1))
@@ -61,6 +61,7 @@ class Title(Scene):
             you.animate.move_to(you2)
         ))
         self.wait(2)
+        """
         
 
 
